@@ -1,0 +1,42 @@
+{
+    "name": "abhishekkrhaith11/dblog",
+    "description": ":description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abhishek Kumar Haith",
+            "email": "abhishek.haith11@gmail.com",
+            "homepage": "https://github.com/abhishekkrhaith11/dblog"
+        }
+    ],
+    "homepage": "https://github.com/abhishekkrhaith11/dblog",
+    "keywords": ["Laravel", "dblog"],
+    "require": {
+        "illuminate/support": "~5",
+        "illuminate/database": "~5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "orchestra/testbench": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Abhishekkrhaith11\\Dblog\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Abhishekkrhaith11\\Dblog\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Abhishekkrhaith11\\Dblog\\DblogServiceProvider"
+            ],
+            "aliases": {
+                "dblog": "Abhishekkrhaith11\\Dblog\\Facades\\Dblog"
+            }
+        }
+    }
+}
