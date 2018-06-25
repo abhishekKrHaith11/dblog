@@ -9,49 +9,59 @@ class Dblog
 
     public function emergency($message)
     {
-    	return MDblog::create(['type' => 'emergency', 'message' => $message]);
+    	return $this->logMessage('emergency', $message);
     }
 
 
     public function alert($message)
     {
-    	return MDblog::create(['type' => 'alert', 'message' => $message]);
+        return $this->logMessage('alert', $message);
     }
 
 
     public function critical($message)
     {
-    	return MDblog::create(['type' => 'critical', 'message' => $message]);
+        return $this->logMessage('critical', $message);
     }
 
 
     public function error($message)
     {
-    	return MDblog::create(['type' => 'error', 'message' => $message]);
+        return $this->logMessage('error', $message);
     }
 
 
     public function warning($message)
     {
-    	return MDblog::create(['type' => 'warning', 'message' => $message]);
+        return $this->logMessage('warning', $message);
     }
 
 
     public function notice($message)
     {
-        return MDblog::create(['type' => 'notice', 'message' => $message]);
+        return $this->logMessage('notice', $message);
     }
 
 
     public function info($message)
     {
-        return MDblog::create(['type' => 'info', 'message' => $message]);
+        return $this->logMessage('info', $message);
     }
 
 
 	public function debug($message)
     {
-        return MDblog::create(['type' => 'debug', 'message' => $message]);
+        return $this->logMessage('debug', $message);
+    }
+
+    protected function logMessage($type, $message)
+    {
+        $log = new MDblog;
+
+        $log->type = $type;
+        $log->message = $message;
+
+        return $log->save();
     }
 
 }
