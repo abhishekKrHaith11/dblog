@@ -54,6 +54,11 @@ class Dblog
         return $this->logMessage('debug', $message);
     }
 
+    public function logs($type)
+    {
+        return MDblog::where('type', $type)->latest()->get( [ 'type', 'message', 'created_at' ] )->toArray();
+    }
+
     protected function logMessage($type, $message)
     {
         $log = new MDblog;
