@@ -1,11 +1,11 @@
 # dblog
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
-[![StyleCI][ico-styleci]][link-styleci]
+[![Latest Stable Version](https://poser.pugx.org/abhishekkrhaith11/dblog/version)](https://packagist.org/packages/abhishekkrhaith11/dblog)
+[![Total Downloads](https://poser.pugx.org/abhishekkrhaith11/dblog/downloads)](https://packagist.org/packages/abhishekkrhaith11/dblog)
+[![Latest Unstable Version](https://poser.pugx.org/abhishekkrhaith11/dblog/v/unstable)](//packagist.org/packages/abhishekkrhaith11/dblog)
+[![License](https://poser.pugx.org/abhishekkrhaith11/dblog/license)](https://packagist.org/packages/abhishekkrhaith11/dblog)
 
-This package will help to keep log in database with type. Take a look at [contributing.md](contributing.md) to see a to do list.
+This package will help to keep log in database with type for Laravel applications.
 
 ## Installation
 
@@ -17,41 +17,64 @@ $ composer require abhishekkrhaith11/dblog
 
 ## Usage
 
-## Change log
+After installation you need to add the following line to config/app.php -
 
-Please see the [changelog](changelog.md) for more information on what has changed recently.
-
-## Testing
-
-``` bash
-$ composer test
+```
+'providers' => [
+	/*
+     * Package Service Providers...
+     */
+    Abhishekkrhaith11\Dblog\DblogServiceProvider::class,
+]
 ```
 
-## Contributing
+If you want to use alias add the following -
 
-Please see [contributing.md](contributing.md) for details and a todolist.
+```
+'aliases' => [
+	/*
+     * Package Facades...
+     */
+    'Dblog' => Abhishekkrhaith11\Dblog\Facades\Dblog::class,
+]
+```
 
-## Security
+After setup you need migrate the database using
 
-If you discover any security related issues, please email abhishek.haith11@gmail.com instead of using the issue tracker.
+``` bash
+$ php artisan migrate
+```
 
-## Credits
+You can change the database table name before migration. For that you have to publish configs. use -
 
-- [Abhishek Kumar Haith][link-author]
-- [All Contributors][link-contributors]
+``` bash
+$ php artisan vendor:publish --provider=Abhishekkrhaith11\Dblog\DblogServiceProvider
+```
+
+## Documentation
+
+Available log methods -
+```
+Dblog::emergency(string $msg);
+Dblog::alert(string $msg);
+Dblog::critical(string $msg);
+Dblog::error(string $msg);
+Dblog::warning(string $msg);
+Dblog::notice(string $msg);
+Dblog::info(string $msg);
+Dblog::debug(string $msg);
+```
+
+To retrive logs use -
+```
+Dblog::logs(string $type);
+```
+This will return a array of all logs found in log table. Each log will contain log type, message and log time.
+
+## Support
+
+If you found any issues you can report in github issues.
 
 ## License
 
 MIT. Please see the [license file](license.md) for more information.
-
-[ico-version]: https://img.shields.io/packagist/v/abhishekkrhaith11/dblog.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/abhishekkrhaith11/dblog.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/abhishekkrhaith11/dblog/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
-
-[link-packagist]: https://packagist.org/packages/abhishekkrhaith11/dblog
-[link-downloads]: https://packagist.org/packages/abhishekkrhaith11/dblog
-[link-travis]: https://travis-ci.org/abhishekkrhaith11/dblog
-[link-styleci]: https://styleci.io/repos/12345678
-[link-author]: https://github.com/abhishekkrhaith11
-[link-contributors]: ../../contributors]
