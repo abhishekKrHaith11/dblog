@@ -13,10 +13,8 @@ class DblogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'abhishekkrhaith11');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'abhishekkrhaith11');
+        
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -24,25 +22,8 @@ class DblogServiceProvider extends ServiceProvider
             // Publishing the configuration file.
             $this->publishes([
                 __DIR__.'/../config/dblog.php' => config_path('dblog/dblog.php'),
-            ], 'dblog.dblog');
+            ], 'dblog.config');
 
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => base_path('resources/views/vendor/abhishekkrhaith11'),
-            ], 'dblog.views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/abhishekkrhaith11'),
-            ], 'dblog.views');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/abhishekkrhaith11'),
-            ], 'dblog.views');*/
-
-            // Registering package commands.
-            // $this->commands([]);
         }
     }
 
