@@ -1,7 +1,7 @@
 <?php
 
 return [
-	
-	// Log table name
+
+    // Log table name
     'table' => 'dblogs',
 ];
