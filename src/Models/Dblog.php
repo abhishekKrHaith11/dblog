@@ -10,6 +10,6 @@ class Dblog extends Model
 
     public function __construct()
     {
-    	$this->table = config('dblog.table');
+        $this->table = config('dblog.table');
     }
 }

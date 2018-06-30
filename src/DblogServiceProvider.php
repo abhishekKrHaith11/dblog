@@ -13,7 +13,6 @@ class DblogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         // Publishing is only necessary when using the CLI.
@@ -23,7 +22,6 @@ class DblogServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../config/dblog.php' => config_path('dblog/dblog.php'),
             ], 'dblog.config');
-
         }
     }
 
